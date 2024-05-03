@@ -3,9 +3,10 @@ from rest_framework import serializers
 
 
 class SnippetSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Snippet
-        fields = "__all__"  # すべてのフィールドを含める
+        fields = ["code", "title", "description"]  # すべてのフィールドを含める
 
     title = serializers.CharField(max_length=100)
 
