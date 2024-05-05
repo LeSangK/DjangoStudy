@@ -21,9 +21,10 @@ def snippet_new(request: HttpRequest) -> HttpResponse:
     """
     Create a new code snippet.
     """
-    serializer = SnippetSerializer(data=request.data)
+    serializer = SnippetSerializer(data=request.data, context={"request": request})
+    print(request.user)
     if serializer.is_valid():
-        # データを保存
+        # データを保存する際に、create_byをrequest.userに設定
         serializer.save()
         # レスポンスを返す
         return Response(serializer.data, status=status.HTTP_201_CREATED)

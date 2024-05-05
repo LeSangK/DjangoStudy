@@ -39,7 +39,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "snippets.apps.SnippetsConfig",
     "rest_framework",
+    "users",
 ]
+
+AUTH_USER_MODEL = "users.CustomUser"
+
+ALLOWED_HOSTS = ["*"]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

@@ -8,10 +8,12 @@ class Snippet(models.Model):
     code = models.TextField("コード", blank=True)
     description = models.TextField("説明", blank=True)
     created_by = models.ForeignKey(
-        settings.AUTH_USER_MODEL, verbose_name="投稿者", on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL,
+        verbose_name="投稿者",
+        on_delete=models.CASCADE,
     )
     created_at = models.DateTimeField("投稿日", auto_now_add=True)
     update_at = models.DateTimeField("更新日", auto_now=True)
 
     def __str__(self):
-        return self.title
+        return self
