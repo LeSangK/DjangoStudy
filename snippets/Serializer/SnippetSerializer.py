@@ -6,9 +6,16 @@ class SnippetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Snippet
-        fields = ["code", "title", "description"]  # すべてのフィールドを含める
+        fields = "__all__"
+        read_only_fields = ("created_by",)
 
     title = serializers.CharField(max_length=100)
+
+    def create(self, validated_data):
+        # Assign the current user, which should be set in the serializer's context
+        user = self.context["request"].user
+        snippet = Snippet.objects.create(created_by=user, **validated_data)
+        return snippet
 
     def validate_title(self, value):
         """
