@@ -33,3 +33,6 @@ class CustomUserManager(BaseUserManager):
         if extra_fields.get("is_superuser") is not True:
             raise ValueError(_("Superuser must have is_superuser=True."))
         return self.create_user(email, password, **extra_fields)
+
+    def get_by_natural_key(self, email):
+        return self.get(**{self.model.USERNAME_FIELD: email})

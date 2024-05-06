@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "snippets.apps.SnippetsConfig",
     "rest_framework",
+    "rest_framework.authtoken",
     "users",
 ]
 
